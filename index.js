@@ -1,6 +1,6 @@
 // index.js
 
-const OTPService = require("./otp-service");
+const OTPService = require("./oursms-otp-redis");
 
 module.exports = OTPService;
 module.exports.default = OTPService;
