@@ -35,7 +35,8 @@ try {
   const response = await otpService.sendOTP(
     "96654XXXXXX",
     6,
-    "Your OTP is: {otp}"
+    "Your OTP is: {otp}",
+    "YOUR_SENDER_NAME"
   );
   console.log(response);
 } catch (error) {
@@ -63,13 +64,14 @@ Creates a new instance of the OTP service.
 - `redisUrl`: URL of the Redis server
 - `smsApiKey`: API key for OurSMS service
 
-### `sendOTP(phoneNumber, otpLength, messageTemplate)`
+### `sendOTP(phoneNumber, otpLength, messageTemplate,SENDER_NAME)`
 
 Generates and sends an OTP to the specified phone number.
 
 - `phoneNumber`: The recipient's phone number
 - `otpLength`: Length of the OTP to generate
 - `messageTemplate`: SMS message template. Use `{otp}` as a placeholder for the OTP.
+- `SENDER_NAME`: Your sender name from OurSMS.com
 
 Returns a promise that resolves with the API response.
 
@@ -128,7 +130,8 @@ try {
   const response = await otpService.sendOTP(
     "96654XXXXXX",
     6,
-    "رمز التحقق الخاص بك هو: {otp}"
+    "رمز التحقق الخاص بك هو: {otp}",
+    "اسم المرسل الخاص بك"
   );
   console.log(response);
 } catch (error) {
@@ -156,13 +159,14 @@ try {
 - `redisUrl`: عنوان URL لخادم Redis
 - `smsApiKey`: مفتاح API لخدمة OurSMS
 
-### `sendOTP(phoneNumber, otpLength, messageTemplate)`
+### `sendOTP(phoneNumber, otpLength, messageTemplate,SENDER_NAME)`
 
 يولد ويرسل OTP إلى رقم الهاتف المحدد.
 
 - `phoneNumber`: رقم هاتف المستلم
 - `otpLength`: طول OTP المراد توليده
 - `messageTemplate`: قالب رسالة SMS. استخدم `{otp}` كعنصر متغير لـ OTP.
+- `SENDER_NAME`: اسم المرسل الخاص بك OurSMS.com
 
 يعيد وعدًا يتم حله مع استجابة API.
 

@@ -13,12 +13,12 @@ class OTPService {
     const digits = "123456789";
     let OTP = "";
     for (let i = 0; i < length; i++) {
-      OTP += digits[Math.floor(Math.random() * 10)];
+      OTP += digits[Math.floor(Math.random() * 9)];
     }
     return OTP;
   }
 
-  async sendOTP(phoneNumber, otpLength, messageTemplate) {
+  async sendOTP(phoneNumber, otpLength, messageTemplate, senderName) {
     const otp = await this.generateOTP(otpLength);
 
     // Store OTP in Redis with 5 minutes expiration
@@ -32,7 +32,7 @@ class OTPService {
       const response = await axios.post(
         "https://api.oursms.com/msgs/sms",
         {
-          src: "oursms",
+          src: senderName,
           body: message,
           dests: [phoneNumber],
         },
